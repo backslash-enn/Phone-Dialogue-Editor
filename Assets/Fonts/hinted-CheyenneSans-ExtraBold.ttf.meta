@@ -1,0 +1,29 @@
+fileFormatVersion: 2
+guid: 90383596109d39442bf295b7f516d140
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Cheyenne Sans
+  fontNames:
+  - Cheyenne Sans
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 72e72540385687c4186a9625874ed646, type: 3}
+  - {fileID: 12800000, guid: 6c2f71d3817a6b24c8211cef2d6ff698, type: 3}
+  - {fileID: 12800000, guid: 45a45986dc95d6d41a32f9a90024f472, type: 3}
+  - {fileID: 12800000, guid: 536f44d698fa57049a3ccaaa9d07a6b7, type: 3}
+  - {fileID: 12800000, guid: 1553a2076aee2eb4d8552d03e62f1bcc, type: 3}
+  - {fileID: 12800000, guid: 86625f882195bb04c87cbbdc3b3fef2d, type: 3}
+  - {fileID: 12800000, guid: 379f972d8173e5944bf7b2972c37297a, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -7,7 +7,7 @@ public class GraphWindowScript : MonoBehaviour
     public float panSensitivity = 10;
     public float scrollSensitivity = 1;
     private Vector2 panDelta;
-    private float zPos;
+    public float zPos;
 
     void Start()
     {

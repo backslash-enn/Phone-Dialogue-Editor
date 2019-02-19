@@ -52,7 +52,7 @@ public class EditorPanelScript : MonoBehaviour
 
     public void LoadGraph()
     {
-        int i, j;
+        int i;
 
         //headerText.text = phoneDialogue.agentName;
 

@@ -46,9 +46,9 @@ public class NodeUIScript : MonoBehaviour
         nodeIndexText.text = node.id.ToString();
         r.anchoredPosition = new Vector2(node.positionX, node.positionY);
         if (node.winState)
-            nodeNameText.text = "<color=#aaffaa>Win State</color>";
+            nodeNameText.text = "<color=#44aa44>Win State</color>";
         else if (node.loseState)
-            nodeNameText.text = "<color=#ffaaaa>Lose State</color>";
+            nodeNameText.text = "<color=#aa4444>Lose State</color>";
         else
             nodeNameText.text = node.nodeName;
 

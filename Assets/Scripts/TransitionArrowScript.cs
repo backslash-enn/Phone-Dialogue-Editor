@@ -9,9 +9,9 @@ public class TransitionArrowScript : MonoBehaviour
     public bool targetMouse;
     public Transform intent, target;
     public List<PhoneDialogue.Joint> joints;
-    private Transform[] jointHeadObjects;
+    private List<Transform> jointHeadObjects;
     public GameObject jointHeadPrefab;
-    private RectTransform[] jointBodyObjects;
+    private List<RectTransform> jointBodyObjects;
     public GameObject jointBodyPrefab;
 
     void Awake()
@@ -19,7 +19,8 @@ public class TransitionArrowScript : MonoBehaviour
         r = GetComponent<RectTransform>();
         body = transform.GetChild(0).GetComponent<RectTransform>();
         joints = new List<PhoneDialogue.Joint>();
-        jointHeadObjects = new Transform[0];
+        jointHeadObjects = new List<Transform>();
+        jointBodyObjects = new List<RectTransform>();
     }
 
     void Update()
@@ -33,32 +34,37 @@ public class TransitionArrowScript : MonoBehaviour
 
         r.position = intent.position;
 
-        for (i = 0; i < jointHeadObjects.Length; i++)
+        // Make the object count match the joint count
+        // If we have too many objects
+        for (i = joints.Count; i < jointHeadObjects.Count; i++)
         {
             Destroy(jointHeadObjects[i].gameObject);
+            jointHeadObjects.RemoveAt(i);
             Destroy(jointBodyObjects[i].gameObject);
+            jointBodyObjects.RemoveAt(i);
         }
-
-        jointHeadObjects = new Transform[joints.Count];
-        jointBodyObjects = new RectTransform[joints.Count];
+        // If we have too few objects
+        for (i = jointHeadObjects.Count; i < joints.Count; i++)
+        {
+            jointHeadObjects.Add(Instantiate(jointHeadPrefab, transform).transform);
+            jointBodyObjects.Add(Instantiate(jointBodyPrefab, transform).GetComponent<RectTransform>());
+        }
 
         // Joints
         for (i = 0; i < joints.Count; i++)
         {
-            jointHeadObjects[i] = Instantiate(jointHeadPrefab, transform).transform;
             jointHeadObjects[i].localPosition = new Vector3(joints[i].xPos, joints[i].yPos, 0);
 
             targetVector = jointHeadObjects[i].position;
             diffVector = targetVector - (i == 0 ? intent : jointHeadObjects[i-1]).position;
 
-            jointBodyObjects[i] = Instantiate(jointBodyPrefab, transform).GetComponent<RectTransform>();
             jointBodyObjects[i].position = (i == 0 ? intent : jointHeadObjects[i - 1]).position;
             jointBodyObjects[i].eulerAngles = new Vector3(0, 0, Mathf.Atan2(diffVector.y, diffVector.x) * Mathf.Rad2Deg + 90);
             jointBodyObjects[i].sizeDelta = new Vector2(jointBodyObjects[i].sizeDelta.x, diffVector.magnitude);
         }
 
         // Final Segment
-        finalSegmentBasePos = (joints.Count > 0 ? jointHeadObjects[jointHeadObjects.Length-1].position : intent.position);
+        finalSegmentBasePos = (joints.Count > 0 ? jointHeadObjects[jointHeadObjects.Count-1].position : intent.position);
         targetVector = !targetMouse ? target.position : Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 450));
         diffVector = targetVector - finalSegmentBasePos;
 

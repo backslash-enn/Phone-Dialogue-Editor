@@ -970,7 +970,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 410900913}
-  panSensitivity: 1
+  panSensitivity: 400
   scrollSensitivity: 300
   zPos: 0
 --- !u!1 &368332231
@@ -3978,7 +3978,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -88.75, y: -0.12463379}
+  m_AnchoredPosition: {x: -88.75003, y: -0.12463379}
   m_SizeDelta: {x: 177.5, y: 0.24933}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2039803035

@@ -21,7 +21,7 @@ public class NodeUIScript : MonoBehaviour
     public GameObject intentUI;
     private Transform arrowParent;
     public GameObject transitionArrowPrefab;
-    public EditorPanelScript eps;
+    public ManagerScript ms;
 
     void Awake()
     {
@@ -70,7 +70,7 @@ public class NodeUIScript : MonoBehaviour
             if (node.intentNodeMappings[i] != null)
             {
                 transitionArrows[i].intent = intentTexts[i].transform;
-                transitionArrows[i].target = eps.nuis[node.intentNodeMappings[i].id].transform;
+                transitionArrows[i].target = ms.nuis[node.intentNodeMappings[i].id].transform;
                 // Joints
                 for (int j = 0; j < node.intentJoints[i].Count; j++)
                     transitionArrows[i].joints.Add(node.intentJoints[i][j]);

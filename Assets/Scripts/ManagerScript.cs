@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EditorPanelScript : MonoBehaviour
+public class ManagerScript : MonoBehaviour
 {
     PhoneDialogue phoneDialogue;
     public List<NodeUIScript> nuis;
@@ -68,7 +68,7 @@ public class EditorPanelScript : MonoBehaviour
     public void CreateNode(int nodeID)
     {
         NodeUIScript nui = Instantiate(nodePrefab, graphWindow).GetComponent<NodeUIScript>();
-        nui.eps = this;
+        nui.ms = this;
         nui.AssignNode(phoneDialogue.dialogueNodes[nodeID]);
         nuis.Add(nui);
     }
